@@ -59,7 +59,7 @@ def process_message(message: str) -> None:
     Args:
         message (str): The message to process.
     """
-    logger.info(f"Processing message: {message}")
+    logger.info(f"Processing facebook post: {message}")
 
 
 #####################################
@@ -86,16 +86,16 @@ def main() -> None:
     consumer = create_kafka_consumer(topic, group_id)
 
      # Poll and process messages
-    logger.info(f"Polling messages from topic '{topic}'...")
+    logger.info(f"Polling facebook posts from topic '{topic}'...")
     try:
         for message in consumer:
             message_str = message.value
-            logger.debug(f"Received message at offset {message.offset}: {message_str}")
+            logger.debug(f"Received post at offset {message.offset}: {message_str}")
             process_message(message_str)
     except KeyboardInterrupt:
         logger.warning("Consumer interrupted by user.")
     except Exception as e:
-        logger.error(f"Error while consuming messages: {e}")
+        logger.error(f"Error while consuming post: {e}")
     finally:
         consumer.close()
         logger.info(f"Kafka consumer for topic '{topic}' closed.")
