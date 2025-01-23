@@ -75,7 +75,7 @@ def generate_messages(producer, topic, interval_secs):
     try:
         while True:
             for message in string_list:
-                logger.info(f"Generated buzz: {message}")
+                logger.info(f"Facebook post: {message}")
                 producer.send(topic, value=message)
                 logger.info(f"Sent message to topic '{topic}': {message}")
                 time.sleep(interval_secs)
