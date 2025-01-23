@@ -1,7 +1,7 @@
 """
-kafka_producer_case.py
+kafka_producer_moss.py
 
-Produce some streaming buzz strings and send them to a Kafka topic.
+Produce some facebook posts strings and send them to a Kafka topic.
 """
 
 #####################################
@@ -77,7 +77,7 @@ def generate_messages(producer, topic, interval_secs):
             for message in string_list:
                 logger.info(f"Facebook post: {message}")
                 producer.send(topic, value=message)
-                logger.info(f"Sent message to topic '{topic}': {message}")
+                logger.info(f"Sent post to topic '{topic}': {message}")
                 time.sleep(interval_secs)
     except KeyboardInterrupt:
         logger.warning("Producer interrupted by user.")
