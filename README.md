@@ -99,3 +99,31 @@ Managing Python virtual environments is a valuable skill.
 This project is licensed under the MIT License as an example project. 
 You are encouraged to fork, copy, explore, and modify the code as you like. 
 See the [LICENSE](LICENSE.txt) file for more.
+
+
+
+## Start Producer and Consumer 
+
+.venv\Scripts\activate
+py -m producers.kafka_producer_case
+
+.venv\Scripts\activate
+py -m consumers.kafka_consumer_case
+
+
+## Start WSL Terminal
+
+Terminal 1
+
+PS C:\Users\nolan> wsl
+moss@InspironNolan:~$ cd ~/kafka
+moss@InspironNolan:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Terminal 2
+
+PS C:\Users\nolan> wsl
+moss@InspironNolan:/mnt/c/Users/nolan$ cd ~/kafka
+moss@InspironNolan:~/kafka$ bin/kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+
+Add this after kafka
+moss@InspironNolan:~/kafka$ bin/kafka-server-start.sh config/server.properties
