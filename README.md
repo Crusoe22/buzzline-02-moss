@@ -1,3 +1,50 @@
+# Kafka Producer and Consumer Scripts
+
+This repository includes two new scripts designed to emulate Facebook posts from users and process that data using Apache Kafka. Below, you'll find instructions to set up and run the producer and consumer scripts, as well as how to start the necessary services in a WSL (Windows Subsystem for Linux) environment.
+
+## Running the Producer and Consumer Scripts
+
+### Activate the Python Virtual Environment
+
+```shell
+
+py -m venv .venv
+.venv\Scripts\Activate
+py -m pip install -r requirements.txt
+
+
+```
+
+### Start Producer and Consumer 
+
+.venv\Scripts\activate
+py -m producers.kafka_producer_moss
+
+.venv\Scripts\activate
+py -m consumers.kafka_consumer_moss
+
+
+### Start WSL Terminal
+
+Terminal 1
+
+PS C:\Users\nolan> wsl
+moss@InspironNolan:~$ cd ~/kafka
+moss@InspironNolan:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
+
+Terminal 2
+
+PS C:\Users\nolan> wsl
+moss@InspironNolan:/mnt/c/Users/nolan$ cd ~/kafka
+moss@InspironNolan:~/kafka$ bin/kafka-server-start.sh config/server.properties
+
+
+
+
+
+
+
+
 # buzzline-02-case
 
 Streaming data is often too big for any one machine. 
@@ -101,29 +148,3 @@ You are encouraged to fork, copy, explore, and modify the code as you like.
 See the [LICENSE](LICENSE.txt) file for more.
 
 
-
-## Start Producer and Consumer 
-
-.venv\Scripts\activate
-py -m producers.kafka_producer_case
-
-.venv\Scripts\activate
-py -m consumers.kafka_consumer_case
-
-
-## Start WSL Terminal
-
-Terminal 1
-
-PS C:\Users\nolan> wsl
-moss@InspironNolan:~$ cd ~/kafka
-moss@InspironNolan:~/kafka$ bin/zookeeper-server-start.sh config/zookeeper.properties
-
-Terminal 2
-
-PS C:\Users\nolan> wsl
-moss@InspironNolan:/mnt/c/Users/nolan$ cd ~/kafka
-moss@InspironNolan:~/kafka$ bin/kafka-topics.sh --create --topic test-topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
-
-Add this after kafka
-moss@InspironNolan:~/kafka$ bin/kafka-server-start.sh config/server.properties
